@@ -1,0 +1,16 @@
+<h2>Sign up</h2>
+<%= form_for @changeset, Routes.registration_path(@conn, :create), [as: :registration], fn f -> %>
+    <%= label f, :email, "Email address" %>
+    <%= text_input f, :email, required: true, autofocus: true %>
+    <%= error_tag f, :email %>
+    <br>
+    <%= label f, :username, "Username" %>
+    <%= text_input f, :username, required: true %>
+    <%= error_tag f, :username %>
+    <br>
+    <%= label f, :password %>
+    <%= password_input f, :encrypted_password, required: true %>
+    <%= error_tag f, :encrypted_password %>
+    <br>
+    <%= submit "Sign Up" %>
+<% end %>

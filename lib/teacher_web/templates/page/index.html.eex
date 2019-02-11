@@ -1,0 +1,10 @@
+<h2>Welcome to the Record Store</h2>
+<%= if @conn.assigns[:current_user] do %>
+  <p>
+    <%= @current_user.username %> your secret code is <%= @secret_code %>
+  </p>
+<% else %>
+  <p>
+    <%= link "View albums", to: Routes.album_path(@conn, :index) %>
+  </p>
+<% end %>

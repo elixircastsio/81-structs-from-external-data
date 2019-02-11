@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Teacher · Phoenix Framework</title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+  </head>
+  <body>
+    <main role="main" class="container">
+      <%= link "Home", to: Routes.page_path(@conn, :index) %> |
+      <%= link "Albums", to: Routes.album_path(@conn, :index) %> |
+      <%= if @conn.assigns[:current_user] do %>
+        <%= link "Sign out", to: Routes.session_path(@conn, :delete), method: :delete %>
+        <span><%= @current_user.username %> your secret code is <%= @secret_code %></span>
+      <% else %>
+        <%= link "Sign in", to: Routes.session_path(@conn, :new) %> |
+        <%= link "Sign up", to: Routes.registration_path(@conn, :new) %>
+      <% end %>
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <%= render @view_module, @view_template, assigns %>
+    </main>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>

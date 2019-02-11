@@ -1,0 +1,29 @@
+<h1>Albums</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artist</th>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Summary</th>
+      <th>Year</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= for album <- @albums do %>
+      <tr>
+        <td><%= album.artist_name %></td>
+        <td><%= album.album_title %></td>
+        <td><%= album.album_category %></td>
+        <td><%= album.album_summary %></td>
+        <td><%= album.album_year %></td>
+        <td>
+          <%= link "Show", to: Routes.album_path(@conn, :show, album) %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

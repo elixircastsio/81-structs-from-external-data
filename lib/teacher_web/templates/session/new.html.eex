@@ -1,0 +1,10 @@
+<h2>Sign in</h2>
+<%= form_for @conn, Routes.session_path(@conn, :create), [as: :session], fn f -> %>
+  <%= label f, :email, "Email address" %>
+  <%= text_input f, :email, required: true, autofocus: true %>
+  <br>
+  <%= label f, :password %>
+  <%= password_input f, :password, required: true %>
+  <br>
+  <%= submit "Sign in" %>
+<% end %>
